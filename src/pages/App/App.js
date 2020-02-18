@@ -1,10 +1,12 @@
 import React from 'react';
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Link } from "react-router-dom";
 
 
 import './App.css';
 
 import Nav from "../../components/Nav/Nav";
+import Landing from "../../components/Landing/Landing";
+import Dashboard from "../../components/Dashboard/Dashboard";
 import SignupPage from "../SignupPage/SignupPage";
 import LoginPage from "../LoginPage/LoginPage";
 import userService from '../../utils/userService';
@@ -37,7 +39,10 @@ class App extends React.Component {
             exact
             path="/"
             render={() => (
-              <div>Whattup</div>
+              !userService.getUser() ?
+                <Landing />
+              :
+                <Dashboard />
             )}
           />
           <Route
@@ -55,6 +60,14 @@ class App extends React.Component {
             )}
           />
         </Switch>
+        <footer className="center">
+          <span>Created by <a href="https://louispham.dev">Louis Pham</a></span>
+          <div class="links">
+            <Link to="">About</Link>
+            <Link to="">Terms</Link>
+            <a href="https://github.com/louis-pham/ursa">Source Code</a>
+          </div>
+        </footer>
       </div>
     );
   }

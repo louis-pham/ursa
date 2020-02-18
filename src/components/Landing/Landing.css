@@ -1,0 +1,14 @@
+.Landing {
+  height: calc(100vh - 180px);
+  flex-direction: column;
+  padding: 0 20vw;
+}
+
+.Landing h1 {
+  text-transform: uppercase;
+}
+
+.Landing .btn {
+  margin-bottom: 10px;
+  width: 100px;
+}
