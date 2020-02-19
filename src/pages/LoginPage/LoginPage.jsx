@@ -32,24 +32,16 @@ function LoginPage(props) {
 
   return (
     <div className="LoginPage">
-      <header className="header-footer">Log In</header>
-      <form className="form-horizontal" onSubmit={handleSubmit} >
-        <div className="form-group">
-          <div className="col-sm-12">
-            <input type="email" className="form-control" placeholder="Email" value={state.email} name="email" onChange={handleChange} />
-          </div>
-        </div>
-        <div className="form-group">
-          <div className="col-sm-12">
-            <input type="password" className="form-control" placeholder="Password" value={state.pw} name="pw" onChange={handleChange} />
-          </div>
-        </div>
-        <div className="form-group">
-          <div className="col-sm-12 text-center">
-            <button className="btn btn-default">Log In</button>&nbsp;&nbsp;&nbsp;
-            <Link to='/'>Cancel</Link>
-          </div>
-        </div>
+      <header><h1>Log In</h1></header>
+      <form onSubmit={handleSubmit}>
+      <label htmlFor="email">Email</label>
+      <input type="email" className="form-control" placeholder="you@example.com" value={state.email} id="email" name="email" onChange={handleChange} />
+
+      <label htmlFor="pw">Password</label>
+      <input type="password" className="form-control" placeholder="********" value={state.pw} id="pw" name="pw" onChange={handleChange} />
+
+      <button className="btn btn-default">Log In</button>
+      <Link to='/'>Cancel</Link>
       </form>
     </div>
   );

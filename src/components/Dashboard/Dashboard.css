@@ -1,0 +1,14 @@
+.Dashboard {
+  min-height: var(--remaining-height);
+  flex-direction: column;
+  padding: 20px;
+}
+
+.Dashboard h1 {
+  font-size: 3rem;
+  margin-bottom: 30px;
+}
+
+.Dashboard h2 {
+  font-size: 2rem;
+}

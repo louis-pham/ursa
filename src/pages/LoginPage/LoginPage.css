@@ -1,0 +1,39 @@
+.LoginPage {
+  padding: 20px 20px;
+  min-height: var(--remaining-height);
+}
+
+.LoginPage h1 {
+  font-size: 3rem;
+}
+
+.LoginPage form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-flex-start;
+}
+
+.LoginPage form label {
+  margin-top: 5px;
+  font-size: 0.8rem;
+  color: #444;
+}
+
+.LoginPage form input {
+  font-size: 1.1rem;
+}
+
+.LoginPage form input[type=text],
+.LoginPage form input[type=email],
+.LoginPage form input[type=password] {
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 3px 0;
+
+}
+
+.LoginPage button, .LoginPage a {
+  margin-top: 20px;
+  flex: 1 1 20%;
+}

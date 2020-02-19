@@ -9,6 +9,8 @@ import Landing from "../../components/Landing/Landing";
 import Dashboard from "../../components/Dashboard/Dashboard";
 import SignupPage from "../SignupPage/SignupPage";
 import LoginPage from "../LoginPage/LoginPage";
+import About from "../About/About";
+import Terms from "../Terms/Terms";
 import userService from '../../utils/userService';
 
 class App extends React.Component {
@@ -59,12 +61,26 @@ class App extends React.Component {
               <LoginPage history={history} handleSignupOrLogin={this.handleSignupOrLogin} />
             )}
           />
+          <Route
+            exact
+            path="/about"
+            render={({ history }) => (
+              <About history={history} />
+            )}
+          />
+          <Route
+            exact
+            path="/terms"
+            render={({ history }) => (
+              <Terms history={history} />
+            )}
+          />
         </Switch>
         <footer className="center">
           <span>Created by <a href="https://louispham.dev">Louis Pham</a></span>
-          <div class="links">
-            <Link to="">About</Link>
-            <Link to="">Terms</Link>
+          <div className="links">
+            <Link to="/about">About</Link>
+            <Link to="/terms">Terms</Link>
             <a href="https://github.com/louis-pham/ursa">Source Code</a>
           </div>
         </footer>

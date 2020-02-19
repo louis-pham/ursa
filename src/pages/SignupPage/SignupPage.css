@@ -1,0 +1,45 @@
+.SignupPage {
+  padding: 20px 20px;
+  min-height: var(--remaining-height);
+}
+
+.SignupPage header img {
+  display: block;
+  width: 100px;
+  margin: 0 auto 20px auto;
+}
+
+.SignupPage h1 {
+  font-size: 3rem;
+}
+
+.SignupPage form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-flex-start;
+}
+
+.SignupPage form label {
+  margin-top: 5px;
+  font-size: 0.8rem;
+  color: #444;
+}
+
+.SignupPage form input {
+  font-size: 1.1rem;
+}
+
+.SignupPage form input[type=text],
+.SignupPage form input[type=email],
+.SignupPage form input[type=password] {
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 3px 0;
+
+}
+
+.SignupPage button, .SignupPage a {
+  margin-top: 20px;
+  flex: 1 1 20%;
+}

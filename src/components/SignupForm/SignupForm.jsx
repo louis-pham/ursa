@@ -5,7 +5,8 @@ import userService from '../../utils/userService';
 
 function SignupForm(props) {
   const [state, setState] = useState({
-    name: '',
+    firstName: '',
+    lastName: '',
     email: '',
     password: '',
     passwordConf: ''
@@ -33,43 +34,37 @@ function SignupForm(props) {
   }
 
   const isFormInvalid = () => {
-    const valid = !(state.name && state.email && state.password && state.passwordConf && state.password === state.passwordConf);
+    const valid = !(state.firstName && state.lastName && state.email && state.password && state.passwordConf && state.password === state.passwordConf);
     console.log(valid);
     return valid;
   }
 
   return (
-    <div>
-      <header className="header-footer">Sign Up</header>
-      <form className="form-horizontal" onSubmit={handleSubmit} >
-        <div className="form-group">
-          <div className="col-sm-12">
-            <input type="text" className="form-control" placeholder="Name" value={state.name} name="name" onChange={handleChange} />
-          </div>
-        </div>
-        <div className="form-group">
-          <div className="col-sm-12">
-            <input type="email" className="form-control" placeholder="Email" value={state.email} name="email" onChange={handleChange} />
-          </div>
-        </div>
-        <div className="form-group">
-          <div className="col-sm-12">
-            <input type="password" className="form-control" placeholder="Password" value={state.password} name="password" onChange={handleChange} />
-          </div>
-        </div>
-        <div className="form-group">
-          <div className="col-sm-12">
-            <input type="password" className="form-control" placeholder="Confirm Password" value={state.passwordConf} name="passwordConf" onChange={handleChange} />
-          </div>
-        </div>
-        <div className="form-group">
-          <div className="col-sm-12 text-center">
-            <button className="btn btn-default" disabled={isFormInvalid()}>Sign Up</button>&nbsp;&nbsp;
-            <Link to='/'>Cancel</Link>
-          </div>
-        </div>
+    <>
+      <header className="">
+        <h1>Sign Up</h1>
+        <img alt="" src="static/media/user-image-with-black-background.svg" />
+      </header>
+      <form className="" onSubmit={handleSubmit} >
+        <label htmlFor="firstName">First name</label>
+        <input type="text" className="form-control" placeholder="John" value={state.name} id="firstName" name="firstName" onChange={handleChange} />
+
+        <label htmlFor="lastName">Last name</label>
+        <input type="text" className="form-control" placeholder="Doe" value={state.name} id="lastName" name="lastName" onChange={handleChange} />
+
+        <label htmlFor="email">Email</label>
+        <input type="email" className="form-control" placeholder="you@example.com" value={state.email} id="email" name="email" onChange={handleChange} />
+
+        <label htmlFor="password">Password</label>
+        <input type="password" className="form-control" placeholder="🕶" value={state.password} id="password" name="password" onChange={handleChange} />
+
+        <label htmlFor="passwordConf">Confirm Password</label>
+        <input type="password" className="form-control" placeholder="🕶" value={state.passwordConf} id="passwordConf" name="passwordConf" onChange={handleChange} />
+
+        <button className="btn btn-default" disabled={isFormInvalid()}>Sign Up</button>
+        <Link to='/'>Cancel</Link>
       </form>
-    </div>
+    </>
   );
 }
 
