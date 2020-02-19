@@ -11,6 +11,7 @@ import SignupPage from "../SignupPage/SignupPage";
 import LoginPage from "../LoginPage/LoginPage";
 import ProfilePage from "../ProfilePage/ProfilePage";
 import EditProfilePage from "../EditProfilePage/EditProfilePage";
+import UserPage from "../UserPage/UserPage";
 import About from "../About/About";
 import Terms from "../Terms/Terms";
 import userService from '../../utils/userService';
@@ -75,6 +76,13 @@ class App extends React.Component {
             path="/login"
             render={({ history }) => (
               <LoginPage history={history} handleSignupOrLogin={this.handleSignupOrLogin} />
+            )}
+          />
+          <Route
+            exact
+            path="/users/:username"
+            render={({ history, match }) => (
+              <UserPage match={match} user={this.state.user} history={history} />
             )}
           />
           <Route

@@ -7,8 +7,8 @@ function PollPreview(props) {
   return (
     <div className="PollPreview">
       <div className="user-info">
-        <img alt="user avatar" className="avatar avatar--small" src={false ? "USERAVATAR" : "static/media/user-image-with-black-background.svg" } />
-        <Link className="username" to="">@username</Link>
+        <img alt="user avatar" className="avatar avatar--small" src={false ? "USERAVATAR" : "/static/media/user-image-with-black-background.svg" } />
+        <Link className="username" to="/users/testuser">@testuser</Link>
       </div>
       <div className="poll-contents">
         <span className="poll-question">

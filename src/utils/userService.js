@@ -21,6 +21,20 @@ function getUser() {
   return tokenService.getUserFromToken();
 }
 
+function getRequestedUser(username) {
+  return fetch(BASE_URL + `users/${username}`, {
+    method: 'GET',
+    headers: new Headers({
+      "Authorization": "Bearer " + tokenService.getToken()
+    }),
+  })
+  .then(res => {
+    // Valid login if we have a status of 2xx (res.ok)
+    if (res.ok) return res.json();
+    throw new Error('Bad Credentials!');
+  });
+}
+
 function login(creds) {
   return fetch(BASE_URL + 'login', {
     method: 'POST',
@@ -72,6 +86,7 @@ function deleteUser() {
 export default {
   signup,
   getUser,
+  getRequestedUser,
   login,
   logout,
   update,

@@ -5,7 +5,7 @@ import userService from "../../utils/userService";
 
 function LoginPage(props) {
   const [state, setState] = useState({
-    email: '',
+    username: '',
     pw: ''
   });
 
@@ -34,8 +34,8 @@ function LoginPage(props) {
     <div className="LoginPage">
       <header><h1>Log In</h1></header>
       <form onSubmit={handleSubmit}>
-      <label htmlFor="email">Email</label>
-      <input type="email" className="form-control" placeholder="you@example.com" value={state.email} id="email" name="email" onChange={handleChange} />
+      <label htmlFor="username">Username</label>
+      <input type="text" className="form-control" placeholder="username" value={state.email} id="username" name="username" onChange={handleChange} />
 
       <label htmlFor="pw">Password</label>
       <input type="password" className="form-control" placeholder="********" value={state.pw} id="pw" name="pw" onChange={handleChange} />

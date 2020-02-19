@@ -6,12 +6,14 @@ import userService from "../../utils/userService";
 
 function EditProfilePage({ user, history, handleSignupOrLogin, handleLogout }) {
   const [state, setState] = useState({
+    username: user.username,
     firstName: user.firstName,
     lastName: user.lastName,
     email: user.email,
     password: '',
     passwordConf: ''
   });
+
   const [isConfirmModalVisible, setConfirmModalVisible] = useState(false);
 
   const handleChange = e => {
@@ -30,12 +32,11 @@ function EditProfilePage({ user, history, handleSignupOrLogin, handleLogout }) {
         delete newData.passwordConf;
       }
       await userService.update(newData);
-      // user may have changed their email, so get user again
+      // user may have changed their username, so get user again
       handleSignupOrLogin();
       history.push('/profile');
     } catch (err) {
       alert("Error updating");
-      console.log(err);
     }
   }
 
@@ -46,21 +47,26 @@ function EditProfilePage({ user, history, handleSignupOrLogin, handleLogout }) {
       handleLogout();
     }catch (err) {
       alert("Error deleting");
-      console.log(err);
     }
   }
 
   const isModified = () => {
-    return state.firstName === user.firstName &&
+    return state.username === user.username &&
+      state.firstName === user.firstName &&
       state.lastName === user.lastName &&
+      state.avatar === undefined &&
       state.email === user.email;
   };
 
-  console.log(state.firstName === user.firstName);
   return (
     <>
     <div className='EditProfilePage'>
+      <h2>Edit Details</h2>
+      <img alt={`${user.firstName}'s avatar`} src={user.avatar || "/static/media/user-image-with-black-background.svg"} />
       <form onSubmit={handleSubmit}>
+        <label htmlFor="username">Username</label>
+        <input type="text" className="form-control" placeholder="username" value={state.username} id="username" name="username" onChange={handleChange} />
+
         <label htmlFor="firstName">First name</label>
         <input type="text" className="form-control" placeholder="John" value={state.firstName} id="firstName" name="firstName" onChange={handleChange} />
 
@@ -69,6 +75,9 @@ function EditProfilePage({ user, history, handleSignupOrLogin, handleLogout }) {
 
         <label htmlFor="email">Email</label>
         <input type="email" className="form-control" placeholder="you@example.com" value={state.email} id="email" name="email" onChange={handleChange} />
+
+        <label htmlFor="avatar">Avatar</label>
+        <input type="file" className="form-control" id="avatar" name="avatar" onChange={handleChange} />
 
         <label htmlFor="password">Password</label>
         <input type="password" className="form-control" placeholder="････････" value={state.password} id="password" name="password" onChange={handleChange} />

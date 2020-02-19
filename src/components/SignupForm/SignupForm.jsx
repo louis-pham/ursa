@@ -5,11 +5,12 @@ import userService from '../../utils/userService';
 
 function SignupForm(props) {
   const [state, setState] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    passwordConf: ''
+    username: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    passwordConf: ""
   });
 
   const handleChange = e => {
@@ -34,8 +35,7 @@ function SignupForm(props) {
   }
 
   const isFormInvalid = () => {
-    const valid = !(state.firstName && state.lastName && state.email && state.password && state.passwordConf && state.password === state.passwordConf);
-    console.log(valid);
+    const valid = !(state.username && state.firstName && state.lastName && state.email && state.password && state.passwordConf && state.password === state.passwordConf);
     return valid;
   }
 
@@ -46,6 +46,9 @@ function SignupForm(props) {
         <img alt="" src="static/media/user-image-with-black-background.svg" />
       </header>
       <form className="" onSubmit={handleSubmit} >
+        <label htmlFor="username">Username</label>
+        <input type="text" className="form-control" placeholder="username" value={state.username} id="username" name="username" onChange={handleChange} />
+
         <label htmlFor="firstName">First name</label>
         <input type="text" className="form-control" placeholder="John" value={state.firstName} id="firstName" name="firstName" onChange={handleChange} />
 

@@ -8,6 +8,7 @@ router.post("/login", usersCtrl.login);
 
 /*---------- Protected Routes ----------*/
 router.use(require('../../config/auth'));
+router.get("/users/:username", usersCtrl.get);
 router.put("/update", usersCtrl.update);
 router.delete("/delete", usersCtrl.deleteUser);
 
