@@ -36,12 +36,44 @@ function login(creds) {
 }
 
 function logout() {
-  tokenService.removeToken();
+  tokenService.setToken();
+}
+
+function update(user) {
+  return fetch(BASE_URL + "update", {
+    method: "PUT",
+    headers: new Headers({
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + tokenService.getToken()
+    }),
+    body: JSON.stringify(user)
+  }).then(res => {
+    if (res.ok) return res.json();
+    throw new Error("Error trying to update user!");
+  })
+  // Parameter destructuring!
+  .then(({token}) => {
+    tokenService.setToken(token);
+  });
+}
+
+function deleteUser() {
+  return fetch(BASE_URL + "delete", {
+    method: "DELETE",
+    headers: new Headers({
+      "Authorization": "Bearer " + tokenService.getToken()
+    })
+  }).then(res => {
+    if (res.ok) return res.json();
+    throw new Error("Error trying to delete user!");
+  });
 }
 
 export default {
   signup,
   getUser,
   login,
-  logout
+  logout,
+  update,
+  deleteUser
 };

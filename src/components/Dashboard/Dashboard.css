@@ -1,7 +1,13 @@
 .Dashboard {
   min-height: var(--remaining-height);
-  flex-direction: column;
   padding: 20px;
+}
+
+.Dashboard .welcome-msg {
+  display: block;
+  margin: 10px auto;
+  font-size: 1.5rem;
+  font-weight: 500;
 }
 
 .Dashboard h1 {

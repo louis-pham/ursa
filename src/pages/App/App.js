@@ -9,6 +9,8 @@ import Landing from "../../components/Landing/Landing";
 import Dashboard from "../../components/Dashboard/Dashboard";
 import SignupPage from "../SignupPage/SignupPage";
 import LoginPage from "../LoginPage/LoginPage";
+import ProfilePage from "../ProfilePage/ProfilePage";
+import EditProfilePage from "../EditProfilePage/EditProfilePage";
 import About from "../About/About";
 import Terms from "../Terms/Terms";
 import userService from '../../utils/userService';
@@ -43,8 +45,22 @@ class App extends React.Component {
             render={() => (
               !userService.getUser() ?
                 <Landing />
-              :
-                <Dashboard />
+                :
+                <Dashboard user={this.state.user}/>
+            )}
+          />
+          <Route
+            exact
+            path="/profile"
+            render={({ history, match }) => (
+              <ProfilePage match={match} user={this.state.user} history={history} />
+            )}
+          />
+          <Route
+            exact
+            path="/profile/edit"
+            render={({ history, match }) => (
+              <EditProfilePage match={match} user={this.state.user} history={history} handleSignupOrLogin={this.handleSignupOrLogin} handleLogout={this.handleLogout}/>
             )}
           />
           <Route

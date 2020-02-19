@@ -47,10 +47,10 @@ function SignupForm(props) {
       </header>
       <form className="" onSubmit={handleSubmit} >
         <label htmlFor="firstName">First name</label>
-        <input type="text" className="form-control" placeholder="John" value={state.name} id="firstName" name="firstName" onChange={handleChange} />
+        <input type="text" className="form-control" placeholder="John" value={state.firstName} id="firstName" name="firstName" onChange={handleChange} />
 
         <label htmlFor="lastName">Last name</label>
-        <input type="text" className="form-control" placeholder="Doe" value={state.name} id="lastName" name="lastName" onChange={handleChange} />
+        <input type="text" className="form-control" placeholder="Doe" value={state.lastName} id="lastName" name="lastName" onChange={handleChange} />
 
         <label htmlFor="email">Email</label>
         <input type="email" className="form-control" placeholder="you@example.com" value={state.email} id="email" name="email" onChange={handleChange} />

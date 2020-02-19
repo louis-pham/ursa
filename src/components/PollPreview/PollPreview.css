@@ -37,6 +37,12 @@
 
 .PollPreview .poll-contents .poll-options .preview {
   display: inline-block;
+  padding: 5px 10px;
+  margin: 0 5px;
+  border: 2px dashed #a9a9a9;
+  border-radius: 5px;
+  text-align: center;
+  color: grey;
 }
 
 

@@ -1,0 +1,6 @@
+.ProfilePage {
+  height: var(--remaining-height);
+  padding: var(--global-padding);
+  display: flex;
+  flex-direction: column;
+}

@@ -4,6 +4,7 @@
 }
 
 :root {
+  --global-padding: 20px 20px;
   --remaining-height: calc(100vh - 180px);
 }
 
@@ -48,6 +49,12 @@ a.logo {
   align-items: center;
 }
 
+.hidden-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .btn {
   display: inline-block;
   padding: 8px 15px;
@@ -73,6 +80,16 @@ a.btn:visited {
 
 .btn--primary {
   background-color: orange;
+}
+
+.btn--minimal {
+  background-color: rgba(0,0,0,0);
+  border: 1px solid #ccc;
+}
+
+.btn--alert {
+  background-color: #c34343;
+  color: white;
 }
 
 .avatar {

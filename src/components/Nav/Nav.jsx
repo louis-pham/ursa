@@ -8,7 +8,7 @@ const Nav = (props) => {
     <div>
       <Link to='' className='Nav-link' onClick={props.handleLogout}>LOG OUT</Link>
       &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-      <span className='Nav-welcome'>WELCOME, {props.user.firstName}</span>
+      <Link to="/profile" className='Nav-welcome'>My Profile</Link>
     </div>
     ;
 

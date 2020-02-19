@@ -1,4 +1,4 @@
 .Terms {
-  padding: 0 20px;
+  padding: var(--global-padding);
   min-height: var(--remaining-height);
 }
