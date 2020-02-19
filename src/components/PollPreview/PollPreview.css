@@ -1,0 +1,54 @@
+.PollPreview {
+  --padding: 5px 15px;
+  display: block;
+  margin-bottom: 15px;
+  background-color: #f7f7f7;
+  border-radius: 5px;
+  text-decoration: none;
+  box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.2), 2px 2px 5px 3px rgba(0,0,0,0.09);
+}
+
+.PollPreview .user-info {
+  padding: var(--padding);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.PollPreview .user-info .avatar {
+  margin-right: 5px;
+}
+
+.PollPreview .poll-contents {
+  padding: var(--padding);
+  margin: 5px 0;
+}
+
+.PollPreview .poll-contents .poll-question {
+  font-size: 1.3rem;
+}
+
+.PollPreview .poll-contents .poll-options {
+  padding: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.PollPreview .poll-contents .poll-options .preview {
+  display: inline-block;
+}
+
+
+.PollPreview .poll-link {
+  display: block;
+  padding: 9px 0;
+  background-color: rgba(0,0,0,0.1);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: black;
+  font-weight: 500;
+}

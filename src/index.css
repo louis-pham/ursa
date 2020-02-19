@@ -75,6 +75,16 @@ a.btn:visited {
   background-color: orange;
 }
 
+.avatar {
+  width: 75px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.avatar--small {
+  width: 45px;
+}
+
 footer.center {
   height: 80px;
   padding: 0 20px;
