@@ -2,12 +2,13 @@ import React from 'react';
 import { Link } from "react-router-dom";
 
 import './ProfilePage.css';
+import * as Constants from "../../constants";
 
 function ProfilePage({ user, match, history }) {
   return (
     <div className='ProfilePage'>
       <h2>{user.firstName}'s Details</h2>
-      <img alt={`${user.firstName}'s avatar'`} src={user.avatar || "static/media/user-image-with-black-background.svg"} />
+      <img alt={`${user.firstName}'s avatar'`} src={user.avatar || Constants.NOAVATAR} />
 
       <span className="label">Username</span>
       <span id="username">{user.username}</span>

@@ -12,7 +12,7 @@
 .App-header {
   height: 100px;
   padding: 0 20px;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(10px + 1.5vmin);
 }
 
 .App-link {

@@ -7,7 +7,8 @@ module.exports = {
   login,
   update,
   deleteUser,
-  get
+  get,
+  getAllUsers
 }
 
 async function signup(req, res) {
@@ -23,7 +24,7 @@ async function signup(req, res) {
 
 async function login(req, res) {
   try {
-    const user = await User.findOne({username: req.body.username});
+    const user = await User.findOne({username: req.body.username}).select("+password");
     if (!user) return res.status(401).json({err: 'bad credentials'});
     user.comparePassword(req.body.pw, (err, isMatch) => {
       if (isMatch) {
@@ -38,12 +39,21 @@ async function login(req, res) {
   }
 }
 
+async function getAllUsers(req, res) {
+  try {
+    const users = await User.find({}).select("-email -_id"); // dont show private info of users
+    console.log(users);
+    if (!users) return res.status(401).json({err: 'could not get users'});
+    res.status(200).json(users);
+  } catch (err) {
+    return res.status(401).json(err);
+  }
+}
+
 async function get(req, res) {
   try {
     const user = await User.findOne({username: req.params.username}).select("-email -_id");
     if (!user) return res.status(401).json({err: 'could not find user'});
-    // dont show private info of user
-    console.log(user);
     res.status(200).json(user);
   } catch (err) {
     return res.status(401).json(err);
@@ -54,10 +64,15 @@ async function update(req, res) {
   try {
     delete req.body.avatar; // TODO: allow user to upload avatar
     // user's "old username" will be stored in JWT
-    const user = await User.findOneAndUpdate({username: req.user.username}, req.body, {
-      new: true // we want the updated user to update token
+    if (req.body.password !== req.body.passwordConf) throw new Error("password validation failed");
+    delete req.body.passwordConf;
+    const user = await User.findOne({username: req.user.username}).select("+email +password");
+    if (!user) return res.status(401).json({err: 'update failed: could not find user'});
+    // can't use findOneAndUpdate since we cannot hook into the save middleware with it
+    Object.keys(req.body).forEach(key => {
+      if (user[key] !== req.body[key]) user[key] = req.body[key];
     });
-    if (!user) return res.status(401).json({err: 'could not find user'});
+    await user.save();
     const token = createJWT(user);
     res.json({token});
   } catch (err) {

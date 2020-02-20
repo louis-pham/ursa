@@ -26,6 +26,7 @@ userSchema.methods.comparePassword = function(tryPassword, cb) {
 // hook into schema middleware
 userSchema.pre("save", function(next) {
   const user = this;
+  console.log("save middleware");
   if (!user.isModified("password")) return next();
   // hash password
   bcrypt.hash(user.password, SALT_ROUNDS, function(err, hash) {

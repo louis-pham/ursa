@@ -9,10 +9,18 @@
   color: grey;
 }
 
-.Nav-link {
+.Nav-link, .Nav-link:visited {
   color: lightpink;
+  text-decoration: none;
+  margin-left: 5px;
 }
 
-.Nav .logo img {
-  width: 75px;
+.Nav .Nav-link.profile {
+  margin-left: 5px;
+}
+
+.Nav-navigation {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
 }

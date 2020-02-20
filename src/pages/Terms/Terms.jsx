@@ -4,7 +4,7 @@ import "./Terms.css";
 function Terms() {
   return (
     <div className="Terms">
-      <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+      <div>(No avatar) Icon made from <a href="http://www.onlinewebfonts.com/icon">Icon Fonts</a> is licensed by CC BY 3.0</div>
     </div>
   );
 }

@@ -16,6 +16,7 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 // API routes here
 app.use('/api/users', require('./routes/api/users'));
+app.use('/api/polls', require('./routes/api/polls'));
 
 // The following "catch all" route (note the *)is necessary
 // for a SPA's client-side routing to properly work

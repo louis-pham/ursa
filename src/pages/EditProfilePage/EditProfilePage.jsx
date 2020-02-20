@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 
 import './EditProfilePage.css';
+import * as Constants from "../../constants";
 import userService from "../../utils/userService";
 
 function EditProfilePage({ user, history, handleSignupOrLogin, handleLogout }) {
@@ -16,6 +17,14 @@ function EditProfilePage({ user, history, handleSignupOrLogin, handleLogout }) {
 
   const [isConfirmModalVisible, setConfirmModalVisible] = useState(false);
 
+  const isNewPassword = () => {
+    return state.password || state.passwordConf;
+  };
+
+  const isNewPasswordValid = () => {
+    return state.password === state.passwordConf;
+  };
+
   const handleChange = e => {
     setState({
       ...state,
@@ -27,9 +36,14 @@ function EditProfilePage({ user, history, handleSignupOrLogin, handleLogout }) {
     e.preventDefault();
     try {
       const newData = {...state};
-      if (!newData.password) {
+      console.log(isNewPassword);
+      if (!isNewPassword()) {
         delete newData.password;
         delete newData.passwordConf;
+      } else {
+        if (!isNewPasswordValid()) {
+          throw new Error("Password does not match confirmation!");
+        }
       }
       await userService.update(newData);
       // user may have changed their username, so get user again
@@ -55,14 +69,16 @@ function EditProfilePage({ user, history, handleSignupOrLogin, handleLogout }) {
       state.firstName === user.firstName &&
       state.lastName === user.lastName &&
       state.avatar === undefined &&
-      state.email === user.email;
+      state.email === user.email &&
+      state.password === "" &&
+      state.passwordConf === "";
   };
 
   return (
     <>
     <div className='EditProfilePage'>
       <h2>Edit Details</h2>
-      <img alt={`${user.firstName}'s avatar`} src={user.avatar || "/static/media/user-image-with-black-background.svg"} />
+      <img alt={`${user.firstName}'s avatar`} src={user.avatar || Constants.NOAVATAR} />
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username</label>
         <input type="text" className="form-control" placeholder="username" value={state.username} id="username" name="username" onChange={handleChange} />

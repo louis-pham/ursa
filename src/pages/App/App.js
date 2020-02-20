@@ -3,15 +3,19 @@ import { Route, Switch, Link } from "react-router-dom";
 
 
 import './App.css';
-
 import Nav from "../../components/Nav/Nav";
 import Landing from "../../components/Landing/Landing";
 import Dashboard from "../../components/Dashboard/Dashboard";
+// user-related pages
 import SignupPage from "../SignupPage/SignupPage";
 import LoginPage from "../LoginPage/LoginPage";
 import ProfilePage from "../ProfilePage/ProfilePage";
 import EditProfilePage from "../EditProfilePage/EditProfilePage";
 import UserPage from "../UserPage/UserPage";
+import UserDirectory from "../UserDirectory/UserDirectory";
+// poll-related pages
+import CreatePollPage from "../CreatePollPage/CreatePollPage";
+// misc. pages
 import About from "../About/About";
 import Terms from "../Terms/Terms";
 import userService from '../../utils/userService';
@@ -80,9 +84,23 @@ class App extends React.Component {
           />
           <Route
             exact
+            path="/users"
+            render={({ history, match }) => (
+              <UserDirectory match={match} user={this.state.user} history={history} />
+            )}
+          />
+          <Route
+            exact
             path="/users/:username"
             render={({ history, match }) => (
               <UserPage match={match} user={this.state.user} history={history} />
+            )}
+          />
+          <Route
+            exact
+            path="/polls/create"
+            render={({ history, match }) => (
+              <CreatePollPage match={match} user={this.state.user} history={history} />
             )}
           />
           <Route

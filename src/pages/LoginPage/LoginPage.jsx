@@ -35,7 +35,7 @@ function LoginPage(props) {
       <header><h1>Log In</h1></header>
       <form onSubmit={handleSubmit}>
       <label htmlFor="username">Username</label>
-      <input type="text" className="form-control" placeholder="username" value={state.email} id="username" name="username" onChange={handleChange} />
+      <input type="text" className="form-control" placeholder="username" value={state.username} id="username" name="username" onChange={handleChange} />
 
       <label htmlFor="pw">Password</label>
       <input type="password" className="form-control" placeholder="********" value={state.pw} id="pw" name="pw" onChange={handleChange} />

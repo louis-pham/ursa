@@ -1,26 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import "./PollPreview.css";
+import * as Constants from "../../constants";
 
 function PollPreview(props) {
+  const poll = props.poll;
   return (
     <div className="PollPreview">
       <div className="user-info">
-        <img alt="user avatar" className="avatar avatar--small" src={false ? "USERAVATAR" : "/static/media/user-image-with-black-background.svg" } />
-        <Link className="username" to="/users/testuser">@testuser</Link>
+        <img alt="user avatar" className="avatar avatar--small" src={poll.creator.avatar || Constants.NOAVATAR } />
+        <Link className="username" to={`/users/${poll.creator.username}`}>@{poll.creator.username}</Link>
       </div>
       <div className="poll-contents">
         <span className="poll-question">
-          Why did the chicken cross the road?
+          {poll.question}
         </span>
         <div className="poll-options">
-          <div className="preview hidden-ellipsis">To flex</div>
-          <div className="preview hidden-ellipsis">To eat</div>
-          <div className="preview hidden-ellipsis">To get to the other side</div>
+          {poll.choices.map((choice, idx) =>
+            <div key={idx} className="preview hidden-ellipsis">{choice.content}</div>
+          )}
         </div>
       </div>
-      <Link className="poll-link" to="">View details</Link>
+      <Link className="poll-link" to={`/polls/${poll._id}`}>View details</Link>
     </div>
   );
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 
 import './UserPage.css';
+import * as Constants from "../../constants";
 import userService from "../../utils/userService";
 
 function UserPage({ user, match, history }) {
@@ -21,7 +22,7 @@ function UserPage({ user, match, history }) {
       {requestedUser ?
         (<>
         <h2>{requestedUser.firstName}'s Details</h2>
-        <img alt={`${requestedUser.firstName}'s avatar'`} src={requestedUser.avatar || "static/media/user-image-with-black-background.svg"} />
+        <img alt={`${requestedUser.firstName}'s avatar'`} src={requestedUser.avatar || Constants.NOAVATAR} />
 
         <span className="label">Username</span>
         <span id="username">{requestedUser.username}</span>

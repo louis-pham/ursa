@@ -43,6 +43,10 @@ a.logo {
   text-decoration: none;
 }
 
+a.logo img {
+  width: 50px;
+}
+
 .center {
   display: flex;
   justify-content: center;
@@ -93,13 +97,13 @@ a.btn:visited {
 }
 
 .avatar {
-  width: 75px;
+  width: 50px;
   border-radius: 50%;
   background-color: white;
 }
 
 .avatar--small {
-  width: 45px;
+  width: 35px;
 }
 
 footer.center {

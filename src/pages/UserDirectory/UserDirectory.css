@@ -1,0 +1,4 @@
+.UserDirectory {
+  height: var(--remaining-height);
+  padding: var(--global-padding);
+}
