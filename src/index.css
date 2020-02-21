@@ -52,6 +52,11 @@ a.logo img {
   width: 50px;
 }
 
+.required {
+  color: red;
+  font-weight: 700;
+}
+
 .center {
   display: flex;
   justify-content: center;
@@ -121,6 +126,10 @@ a.btn:visited {
 
 .avatar--small {
   width: 35px;
+}
+
+footer {
+  font-size: 1rem;
 }
 
 footer.center {

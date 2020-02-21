@@ -21,20 +21,20 @@ function UserPage({ user, match, history }) {
     <div className='UserPage'>
       {requestedUser ?
         (<>
-        <h2>{requestedUser.firstName}'s Details</h2>
+        <h1>{requestedUser.firstName}'s Details <i class="fas fa-user"></i></h1>
         <img alt={`${requestedUser.firstName}'s avatar'`} src={requestedUser.avatar || Constants.NOAVATAR} />
 
         <span className="label">Username</span>
-        <span id="username">{requestedUser.username}</span>
+        <span id="username" className="user-detail">{requestedUser.username}</span>
 
         <span className="label">First name</span>
-        <span id="firstName">{requestedUser.firstName}</span>
+        <span id="firstName" className="user-detail">{requestedUser.firstName}</span>
 
         <span className="label">Last name</span>
-        <span id="lastName">{requestedUser.lastName}</span>
+        <span id="lastName" className="user-detail">{requestedUser.lastName}</span>
 
         <span className="label">Joined</span>
-        <span id="email">{requestedUser.createdAt}</span>
+        <span id="email" className="user-detail">{new Date(requestedUser.createdAt).toLocaleDateString()}</span>
         </>)
         :
         <div>Loading...</div>

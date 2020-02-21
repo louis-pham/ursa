@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, Switch, Link } from "react-router-dom";
 
-
 import './App.css';
 import Nav from "../../components/Nav/Nav";
 import Landing from "../../components/Landing/Landing";

@@ -7,7 +7,7 @@ import * as Constants from "../../constants";
 function ProfilePage({ user, match, history }) {
   return (
     <div className='ProfilePage'>
-      <h1>My Details</h1>
+      <h1>My Details <i class="fas fa-user"></i></h1>
       <img alt={`${user.firstName}'s avatar'`} src={user.avatar || Constants.NOAVATAR} />
 
       <span className="label">Username</span>

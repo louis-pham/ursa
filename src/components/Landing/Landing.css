@@ -6,10 +6,12 @@
 }
 
 .Landing h1 {
+  font-size: 5rem;
   text-transform: uppercase;
+  font-family: "Gugi";
 }
 
 .Landing .btn {
   margin-bottom: 10px;
-  width: 130px;
+  width: 150px;
 }

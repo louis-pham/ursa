@@ -20,13 +20,17 @@
 }
 
 .EditProfilePage label {
-  margin-top: 10px;
+  margin: 20px 0 5px 0;
   font-size: 0.9rem;
   color: #5d5b5b;
 }
 
 .EditProfilePage input {
-  font-size: 1.2rem;
+  font-size: 0.9rem;
+}
+
+.EditProfilePage .form-control {
+  flex: 1 1 50%;
 }
 
 .EditProfilePage .btn {
@@ -34,8 +38,8 @@
 }
 
 .confirm-delete {
-  position: absolute;
-  height: 100vh;
+  position: fixed;
+  height: 100%;
   width: 100vw;
   top: 0;
   left: 0;

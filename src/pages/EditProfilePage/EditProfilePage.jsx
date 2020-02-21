@@ -77,7 +77,7 @@ function EditProfilePage({ user, history, handleSignupOrLogin, handleLogout }) {
   return (
     <>
     <div className='EditProfilePage'>
-      <h1>Edit My Details</h1>
+      <h1>Edit My Details <i class="fas fa-user-cog"></i></h1>
       <img alt={`${user.firstName}'s avatar`} src={user.avatar || Constants.NOAVATAR} />
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username</label>
@@ -109,11 +109,10 @@ function EditProfilePage({ user, history, handleSignupOrLogin, handleLogout }) {
     </div>
     <div className="confirm-delete" style={{display: isConfirmModalVisible ? "block" : "none"}}>
       <div className="delete-modal">
-      <span>Are you sure you want to delete your account?</span>
-      <button className="btn btn--alert" onClick={handleDelete}>Delete</button>
-      <button className="btn btn--minimal" onClick={() => setConfirmModalVisible(false)}>Cancel</button>
+        <span>Are you sure you want to delete your account?</span>
+        <button className="btn btn--alert" onClick={handleDelete}>Delete</button>
+        <button className="btn btn--minimal" onClick={() => setConfirmModalVisible(false)}>Cancel</button>
       </div>
-
     </div>
     </>
   );

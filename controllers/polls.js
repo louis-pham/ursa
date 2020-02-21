@@ -41,7 +41,9 @@ async function get(req, res) {
     const poll = await Poll.findOne({_id: req.params.id}).populate("creator");
     if (!poll) return res.status(401).json({err: 'could not find poll'});
     const response = poll.choices.filter(choice => choice.responses.includes(req.user._id));
-    res.status(200).json({poll, response});
+    const totalResponses = poll.choices.reduce((acc, choice) => acc + choice.responses.length, 0);
+    console.log(totalResponses);
+    res.status(200).json({poll, response, totalResponses});
   } catch (err) {
     return res.status(401).json(err);
   }

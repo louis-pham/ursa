@@ -44,38 +44,44 @@ function CreatePollPage(props) {
 
   const handleAddNewChoice = (e) => {
     e.preventDefault();
-    // copy choices and push to it, then setState
-    const choices = [...state.choices];
-    choices.push({...newChoice});
-    setState({
-      ...state,
-      choices
-    });
-    setNewChoice({
-      content: ""
-    });
+
+    if (newChoice.content) {
+      // copy choices and push to it, then setState
+      const choices = [...state.choices];
+      choices.push({...newChoice});
+      setState({
+        ...state,
+        choices
+      });
+      setNewChoice({
+        content: ""
+      });
+    } else {
+      alert("cant add a blank choice!");
+    }
+
   }
 
   return (
     <div className="CreatePollPage">
-      <h1>Create A Poll</h1>
+      <h1>Create A Poll <i class="fas fa-plus-square"></i></h1>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="question">Question (max 140 chars.)</label>
+        <label htmlFor="question">Question<span className="required">*</span> (max length 140 chars.)</label>
         <input id="question" name="question" type="text" onChange={handleChange} value={state.question} />
         <label htmlFor="time-limit">Expires</label>
         <input id="time-limit" name="time_limit" type="datetime-local" onChange={handleChange} />
         <div className="choices">
-          <h3>Choices</h3>
+          <h2>Choices <i class="fas fa-list"></i></h2>
           {state.choices.length ?
             state.choices.map((choice, idx) =>
-              <div key={`choice_${idx}`} className="choice">
+              <li key={`choice_${idx}`} className="choice">
                 <span>{choice.content}</span>
-              </div>)
+              </li>)
               :
-              <span>No choices yet</span>}
-          <label htmlFor="content">Choice (max 140 chars.)</label>
-          <input id="content" name="content" type="text" value={newChoice.content} onChange={handleNewChoiceChange} />
-          <button onClick={handleAddNewChoice}>Add Choice</button>
+              <span style={{color: "red", fontWeight: 500, fontSize: "1.3rem"}}>No choices yet</span>}
+          <label htmlFor="content">New Choice<span className="required">*</span> (max length 140 chars.) (min. 2 choices)</label>
+          <input className="new-choice" id="content" name="content" type="text" value={newChoice.content} onChange={handleNewChoiceChange} />
+          <button className="btn btn--secondary new-choice" onClick={handleAddNewChoice}>Add Choice</button>
         </div>
         <button className="btn btn--primary" type="submit">Create</button>
       </form>

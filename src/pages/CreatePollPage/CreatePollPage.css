@@ -1,4 +1,65 @@
 .CreatePollPage {
   height: var(--remaining-height);
   padding: var(--global-padding);
+  display: flex;
+  flex-direction: column;
+}
+
+.CreatePollPage h1 {
+  font-size: 3rem;
+}
+
+.CreatePollPage h2 {
+  font-size: 2.1rem;
+  margin: 0;
+}
+
+.CreatePollPage .btn {
+  margin: 0 0 5px 0;
+}
+
+.CreatePollPage form {
+  display: flex;
+  flex-direction: column;
+}
+
+.CreatePollPage label {
+  margin: 20px 0 5px 0;
+  font-size: 0.9rem;
+  color: #5d5b5b;
+}
+
+.CreatePollPage input {
+  font-size: 0.9rem;
+}
+
+.CreatePollPage input[type="datetime-local"] {
+  min-width: 280px;
+}
+
+.CreatePollPage .choices {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 20px 0;
+  padding: 10px;
+  background: #ddd;
+  border-radius: 5px;
+}
+
+.CreatePollPage .choices > * {
+  flex: 1 1 100%;
+  margin-bottom: 5px;
+}
+
+.CreatePollPage .choice {
+  font-size: 1.3rem;
+}
+
+.CreatePollPage input.new-choice {
+  flex: 0 1 69%;
+}
+
+.CreatePollPage button.new-choice {
+  flex: 0 1 30%;
+  margin-left: auto;
 }

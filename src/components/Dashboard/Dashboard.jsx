@@ -18,14 +18,14 @@ function Dashboard(props) {
 
   return (
     <div className="Dashboard">
-      <span className="welcome-msg">Hi, {props.user.firstName}!</span>
-      <h1>Dashboard</h1>
+      <span className="welcome-msg animated fadeIn">Hi, {props.user.firstName}! 👋</span>
+      <h1>Dashboard <i class="fas fa-tachometer-alt"></i></h1>
       <div className="btn-group">
         <Link to="/polls/create" className="btn btn--primary">Create A Poll</Link>
         <Link to="/profile" className="btn btn--secondary">Your Profile</Link>
       </div>
       <h2>Your Timeline</h2>
-      <section className="polls">
+      <section className={`polls ${polls.length && "animated fadeInUp"}`}>
         {polls.length ?
           polls.map((poll, idx) =>
           <PollPreview key={idx} poll={poll} />)

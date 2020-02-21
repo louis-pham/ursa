@@ -3,22 +3,64 @@
   padding: var(--global-padding);
 }
 
+.PollPage h1 {
+  font-size: 3rem;
+}
+
+.PollPage h2 {
+  font-size: 2.4rem;
+}
+
 .PollPage .creator-info {
 
 }
 
-.PollPage .question {
-
+.PollPage .question, .PollPage .response {
+  margin-top: 30px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.PollPage .response {
-
+.PollPage .question .creator-info, .PollPage .response .your-info {
+  flex: 0 1 20%;
+  display: flex;
+  flex-direction: column;
 }
 
-.PollPage .response-choice {
-
+.PollPage .question .creator-info img, .PollPage .response .your-info img  {
+  width: 100%;
 }
 
-.PollPage .your-info {
+.PollPage .question .creator-info a, .PollPage .response .your-info a {
+  align-self: center;
+}
 
+.PollPage .question .content, .PollPage .response form {
+  flex: 0 1 75%;
+  background-color: #ccc;
+  place-self: stretch;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: calc(0.9rem + 1.6vw);
+  display: flex;
+  flex-direction: column;
+}
+
+.PollPage .response form {
+  background-color: #8b61de;
+  color: white;
+}
+
+.PollPage .response .response-choice  {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-weight: 700;
+}
+
+.PollPage .response .btn {
+  align-self: flex-end;
+  margin-top: auto;
 }
