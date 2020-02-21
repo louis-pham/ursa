@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import "./Dashboard.css";
+import Chatroom from "../Chatroom/Chatroom";
 import PollPreview from "../PollPreview/PollPreview";
 import pollService from "../../utils/pollService";
 
@@ -28,15 +29,22 @@ function Dashboard(props) {
         <Link to="/polls/create" className="btn btn--primary">Create A Poll</Link>
         <Link to="/profile" className="btn btn--secondary">Your Profile</Link>
       </div>
-      <h2>Your Timeline</h2>
-      <section className={`polls ${polls.length && "animated fadeInUp"}`}>
-        {polls.length ?
-          polls.map((poll, idx) =>
-          <PollPreview key={idx} poll={poll} />)
-        :
-          <div className="lds-dual-ring"></div>
-        }
-      </section>
+      <div className="dashboard-main">
+        <h2>Chatroom</h2>
+        <Chatroom user={props.user}/>
+        <div className="timeline">
+          <h2>Your Timeline</h2>
+          <section className={`polls ${polls.length && "animated fadeInUp"}`}>
+            {polls.length ?
+              polls.map((poll, idx) =>
+              <PollPreview key={idx} poll={poll} />)
+            :
+              <div className="lds-dual-ring"></div>
+            }
+          </section>
+        </div>
+      </div>
+
     </div>
   );
 }

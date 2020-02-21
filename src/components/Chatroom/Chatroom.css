@@ -1,0 +1,30 @@
+.Chatroom {
+  background: #d4d4d4;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.2), 2px 2px 5px 3px rgba(0,0,0,0.09);
+}
+
+.Chatroom .messages {
+  padding: 10px;
+  overflow-y: scroll;
+  min-height: 200px;
+  max-height: 300px;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  background: white;
+  border-radius: 3px;
+}
+
+.Chatroom form {
+  display: flex;
+}
+
+.Chatroom form input {
+  flex: 1 1 auto;
+  align-self: stretch;
+  margin: 3px;
+  font-size: 1.1rem;
+}

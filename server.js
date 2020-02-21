@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
+const http = require("http");
 
 const app = express();
 
@@ -29,3 +30,9 @@ const port = process.env.PORT || 3001;
 app.listen(port, function() {
   console.log(`Express app running on port ${port}`)
 });
+
+const server = http.createServer(app);
+const io = require('./io');
+io.attach(server);
+const socketIoPort = 3002;
+server.listen(socketIoPort, () => console.log(`Socket.io listening on port ${socketIoPort}`));
