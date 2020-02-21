@@ -64,7 +64,7 @@ function SignupForm(props) {
         <label htmlFor="passwordConf">Confirm Password</label>
         <input type="password" className="form-control" placeholder="🕶" value={state.passwordConf} id="passwordConf" name="passwordConf" onChange={handleChange} />
 
-        <button className="btn btn-default" disabled={isFormInvalid()}>Sign Up</button>
+        <button className="btn btn--primary" disabled={isFormInvalid()}>Sign Up</button>
         <Link to='/'>Cancel</Link>
       </form>
     </>

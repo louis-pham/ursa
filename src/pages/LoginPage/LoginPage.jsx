@@ -40,7 +40,7 @@ function LoginPage(props) {
       <label htmlFor="pw">Password</label>
       <input type="password" className="form-control" placeholder="********" value={state.pw} id="pw" name="pw" onChange={handleChange} />
 
-      <button className="btn btn-default">Log In</button>
+      <button className="btn btn--secondary" disabled={!state.username || !state.pw}>Log In</button>
       <Link to='/'>Cancel</Link>
       </form>
     </div>

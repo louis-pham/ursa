@@ -64,3 +64,12 @@
   align-self: flex-end;
   margin-top: auto;
 }
+
+.PollPage .result-count, .PollPage .total-responses {
+  display: block;
+  font-size: 1.4rem;
+}
+
+.PollPage .total-responses {
+  margin-top: 5px;
+}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { Line } from 'rc-progress';
 
 import "./PollPage.css";
 import * as Constants from "../../constants";
@@ -67,11 +68,12 @@ function PollPage(props) {
             <h2>Results <i className="fas fa-award"></i></h2>
             {poll.choices.map((choice, idx) =>
               <div key={`result${idx}`} className="results-choice">
-                <span className="result-content">{choice.content}</span>
-                <span className="result-count">{choice.responses.length}</span>
+                <Line percent={choice.responses.length / totalResponses * 100} strokeWidth="1" strokeColor="#91dec9" />
+                <span className="result-count">Votes: <b>{choice.responses.length}</b></span>
               </div>
             )}
-            <span className="total-responses">{totalResponses}</span>
+            <hr />
+            <span className="total-responses">Total: <b>{totalResponses}</b></span>
           </div>
         </>)
         :
