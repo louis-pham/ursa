@@ -18,15 +18,19 @@ function UserDirectory(props) {
 
   return (
     <div className="UserDirectory">
-      { users.length ?
-          users.map((user, idx) =>
-            <div key={idx} className="user-preview">
-              <Link to={`/users/${user.username}`}>{user.username}</Link>
-            </div>
-          )
-          :
-          <div className="lds-dual-ring"></div>
-      }
+      <h1>User Directory <i className="fas fa-users"></i></h1>
+      <div className="users">
+        { users.length ?
+            users.map((user, idx) =>
+              <Link className="user-preview" to={`/users/${user.username}`}>
+                <img src={user.avatar || Constants.NOAVATAR} />
+                <span>{user.username}</span>
+              </Link>
+            )
+            :
+            <div className="lds-dual-ring"></div>
+        }
+      </div>
     </div>
   );
 }
