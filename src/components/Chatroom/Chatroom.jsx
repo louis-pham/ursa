@@ -4,10 +4,7 @@ import socketIOClient from "socket.io-client";
 import "./Chatroom.css";
 
 const SOCKETIOENDPOINT = process.env.REACT_APP_SOCKETIOENDPOINT || "http://localhost:3002";
-const socket = socketIOClient(SOCKETIOENDPOINT);
-
-console.log(process.env);
-console.log(SOCKETIOENDPOINT);
+const socket = socketIOClient(SOCKETIOENDPOINT, {transports: ['websocket', 'polling', 'flashsocket']});
 
 class Chatroom extends React.Component {
   state = {
