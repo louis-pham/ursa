@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import SignupForm from '../../components/SignupForm/SignupForm';
 import './SignupPage.css';
@@ -10,10 +10,15 @@ function SignupPage(props) {
     setMessage(msg);
   }
 
+  useEffect(() => {
+    if (message) {
+      props.notify("error", message);
+    }
+  }, [message]);
+
   return (
     <div className='SignupPage'>
       <SignupForm {...props} updateMessage={updateMessage} />
-      <p>{message}</p>
     </div>
   );
 }

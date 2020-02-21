@@ -24,14 +24,16 @@ function CreatePollPage(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      if (state.question.length > 140) throw new Error("question longer 140 characters");
+      if (state.question.length > 140) throw new Error("Question exceeds 140 characters!");
       state.choices.forEach(choice => {
-        if (choice.content.length > 140) throw new Error("a choice is longer 140 characters");
+        if (choice.content.length > 140) throw new Error("A choice length exceeds 140 characters!");
       });
       await pollService.create(state);
       props.history.push("/");
+      props.notify("success", "Poll created successfully!");
     } catch (err) {
-      alert(err);
+      console.log(err);
+      props.notify("error", err.message);
     }
   }
 
@@ -64,14 +66,14 @@ function CreatePollPage(props) {
 
   return (
     <div className="CreatePollPage">
-      <h1>Create A Poll <i class="fas fa-plus-square"></i></h1>
+      <h1>Create A Poll <i className="fas fa-plus-square"></i></h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="question">Question<span className="required">*</span> (max length 140 chars.)</label>
         <input id="question" name="question" type="text" onChange={handleChange} value={state.question} />
         <label htmlFor="time-limit">Expires</label>
         <input id="time-limit" name="time_limit" type="datetime-local" onChange={handleChange} />
         <div className="choices">
-          <h2>Choices <i class="fas fa-list"></i></h2>
+          <h2>Choices <i className="fas fa-list"></i></h2>
           {state.choices.length ?
             state.choices.map((choice, idx) =>
               <li key={`choice_${idx}`} className="choice">

@@ -1,5 +1,7 @@
 import React from 'react';
 import { Route, Switch, Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 import './App.css';
 import Nav from "../../components/Nav/Nav";
@@ -20,6 +22,16 @@ import About from "../About/About";
 import Terms from "../Terms/Terms";
 import userService from '../../utils/userService';
 
+toast.configure();
+
+const errorTypes = {
+  error: toast.TYPE.ERROR,
+  warning: toast.TYPE.WARNING,
+  info: toast.TYPE.INFO,
+  success: toast.TYPE.SUCCESS,
+  default: toast.TYPE.DEFAULT,
+};
+
 class App extends React.Component {
   state = {
     user: userService.getUser()
@@ -34,9 +46,12 @@ class App extends React.Component {
     this.setState({ user: null });
   };
 
+  notify = (type, msg) => toast(msg, {type: errorTypes[type]});
+
   render() {
     return (
       <div className="App">
+        <ToastContainer />
         <header className="App-header">
           <Nav
             user={this.state.user}
@@ -51,7 +66,7 @@ class App extends React.Component {
               !userService.getUser() ?
                 <Landing />
                 :
-                <Dashboard user={this.state.user}/>
+                <Dashboard user={this.state.user} notify={this.notify}/>
             )}
           />
           <Route
@@ -65,28 +80,29 @@ class App extends React.Component {
             exact
             path="/profile/edit"
             render={({ history, match }) => (
-              <EditProfilePage match={match} user={this.state.user} history={history} handleSignupOrLogin={this.handleSignupOrLogin} handleLogout={this.handleLogout}/>
+              <EditProfilePage match={match} user={this.state.user} history={history} handleSignupOrLogin={this.handleSignupOrLogin} handleLogout={this.handleLogout}
+              notify={this.notify}/>
             )}
           />
           <Route
             exact
             path="/signup"
             render={({ history }) => (
-              <SignupPage history={history} handleSignupOrLogin={this.handleSignupOrLogin} />
+              <SignupPage history={history} handleSignupOrLogin={this.handleSignupOrLogin} notify={this.notify} />
             )}
           />
           <Route
             exact
             path="/login"
             render={({ history }) => (
-              <LoginPage history={history} handleSignupOrLogin={this.handleSignupOrLogin} />
+              <LoginPage history={history} handleSignupOrLogin={this.handleSignupOrLogin} notify={this.notify}/>
             )}
           />
           <Route
             exact
             path="/users"
             render={({ history, match }) => (
-              <UserDirectory match={match} user={this.state.user} history={history} />
+              <UserDirectory match={match} user={this.state.user} history={history} notify={this.notify} />
             )}
           />
           <Route
@@ -100,14 +116,14 @@ class App extends React.Component {
             exact
             path="/polls/create"
             render={({ history, match }) => (
-              <CreatePollPage match={match} user={this.state.user} history={history} />
+              <CreatePollPage match={match} user={this.state.user} history={history} notify={this.notify} />
             )}
           />
           <Route
             exact
             path="/polls/:id"
             render={({ history, match }) => (
-              <PollPage match={match} user={this.state.user} history={history} />
+              <PollPage match={match} user={this.state.user} history={history} notify={this.notify} />
             )}
           />
           <Route

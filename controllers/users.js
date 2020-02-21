@@ -62,7 +62,6 @@ async function get(req, res) {
 
 async function update(req, res) {
   try {
-    delete req.body.avatar; // TODO: allow user to upload avatar
     // user's "old username" will be stored in JWT
     if (req.body.password !== req.body.passwordConf) throw new Error("password validation failed");
     delete req.body.passwordConf;

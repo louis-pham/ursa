@@ -8,6 +8,7 @@
 .ProfilePage img {
   max-width: 200px;
   margin: 0 auto;
+  border-radius: 50%;
 }
 
 .ProfilePage h1 {

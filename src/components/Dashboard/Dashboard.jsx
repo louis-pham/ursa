@@ -10,8 +10,12 @@ function Dashboard(props) {
 
   useEffect(() => {
     const fetchPollsData = async () => {
-      const data = await pollService.getAllPolls();
-      setPolls(data);
+      try {
+        const data = await pollService.getAllPolls();
+        setPolls(data);
+      } catch (err) {
+        props.notify("error", "Couldn't get polls - try refreshing the page")
+      }
     };
     fetchPollsData();
   }, []);
@@ -19,7 +23,7 @@ function Dashboard(props) {
   return (
     <div className="Dashboard">
       <span className="welcome-msg animated fadeIn">Hi, {props.user.firstName}! 👋</span>
-      <h1>Dashboard <i class="fas fa-tachometer-alt"></i></h1>
+      <h1>Dashboard <i className="fas fa-tachometer-alt"></i></h1>
       <div className="btn-group">
         <Link to="/polls/create" className="btn btn--primary">Create A Poll</Link>
         <Link to="/profile" className="btn btn--secondary">Your Profile</Link>

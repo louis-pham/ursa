@@ -5,14 +5,17 @@ import './UserPage.css';
 import * as Constants from "../../constants";
 import userService from "../../utils/userService";
 
-function UserPage({ user, match, history }) {
+function UserPage({ user, match, history, notify }) {
   const [requestedUser, setRequestedUser] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await userService.getRequestedUser(match.params.username);
-      console.log(data);
-      setRequestedUser(data);
+      try {
+        const data = await userService.getRequestedUser(match.params.username);
+        setRequestedUser(data);
+      } catch (err) {
+        notify("error", err.message);
+      }
     }
     fetchData();
     }, []);
@@ -21,7 +24,7 @@ function UserPage({ user, match, history }) {
     <div className='UserPage'>
       {requestedUser ?
         (<>
-        <h1>{requestedUser.firstName}'s Details <i class="fas fa-user"></i></h1>
+        <h1>{requestedUser.firstName}'s Details <i className="fas fa-user"></i></h1>
         <img alt={`${requestedUser.firstName}'s avatar'`} src={requestedUser.avatar || Constants.NOAVATAR} />
 
         <span className="label">Username</span>

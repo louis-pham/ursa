@@ -5,12 +5,13 @@ import './EditProfilePage.css';
 import * as Constants from "../../constants";
 import userService from "../../utils/userService";
 
-function EditProfilePage({ user, history, handleSignupOrLogin, handleLogout }) {
+function EditProfilePage({ user, history, handleSignupOrLogin, handleLogout, notify }) {
   const [state, setState] = useState({
     username: user.username,
     firstName: user.firstName,
     lastName: user.lastName,
     email: user.email,
+    avatar: "",
     password: '',
     passwordConf: ''
   });
@@ -49,8 +50,9 @@ function EditProfilePage({ user, history, handleSignupOrLogin, handleLogout }) {
       // user may have changed their username, so get user again
       handleSignupOrLogin();
       history.push('/profile');
+      notify("success", "Updated user credentials successfully");
     } catch (err) {
-      alert("Error updating");
+      notify("error", err.message);
     }
   }
 
@@ -60,7 +62,7 @@ function EditProfilePage({ user, history, handleSignupOrLogin, handleLogout }) {
       history.push('/');
       handleLogout();
     }catch (err) {
-      alert("Error deleting");
+      notify("error", err.message);
     }
   }
 
@@ -77,7 +79,7 @@ function EditProfilePage({ user, history, handleSignupOrLogin, handleLogout }) {
   return (
     <>
     <div className='EditProfilePage'>
-      <h1>Edit My Details <i class="fas fa-user-cog"></i></h1>
+      <h1>Edit My Details <i className="fas fa-user-cog"></i></h1>
       <img alt={`${user.firstName}'s avatar`} src={user.avatar || Constants.NOAVATAR} />
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username</label>
@@ -92,8 +94,8 @@ function EditProfilePage({ user, history, handleSignupOrLogin, handleLogout }) {
         <label htmlFor="email">Email</label>
         <input type="email" className="form-control" placeholder="you@example.com" value={state.email} id="email" name="email" onChange={handleChange} />
 
-        <label htmlFor="avatar">Avatar</label>
-        <input type="file" className="form-control" id="avatar" name="avatar" onChange={handleChange} />
+        <label htmlFor="avatar">Avatar (external link)</label>
+        <input type="text" className="form-control" id="avatar" name="avatar" onChange={handleChange} />
 
         <label htmlFor="password">Password</label>
         <input type="password" className="form-control" placeholder="････････" value={state.password} id="password" name="password" onChange={handleChange} />

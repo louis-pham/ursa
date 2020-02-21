@@ -23,10 +23,10 @@ function LoginPage(props) {
       await userService.login(state);
       props.handleSignupOrLogin()
       props.history.push('/');
+      props.notify("success", "Login successful!");
     } catch (err) {
       // Use a modal or toast in your apps instead of alert
-      console.log(err);
-      alert('Invalid Credentials!');
+      props.notify("error", "Login failed - check your credentials and try again");
     }
   }
 
@@ -41,7 +41,7 @@ function LoginPage(props) {
       <input type="password" className="form-control" placeholder="********" value={state.pw} id="pw" name="pw" onChange={handleChange} />
 
       <button className="btn btn--secondary" disabled={!state.username || !state.pw}>Log In</button>
-      <Link to='/'>Cancel</Link>
+      <Link className="btn btn--minimal" to='/'>Cancel</Link>
       </form>
     </div>
   );

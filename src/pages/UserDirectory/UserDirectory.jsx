@@ -10,8 +10,12 @@ function UserDirectory(props) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await userService.getAllUsers();
-      setUsers(data);
+      try {
+        const data = await userService.getAllUsers();
+        setUsers(data);
+      } catch (err) {
+        props.notify("error", err.message);
+      }
     };
     fetchData();
   }, []);
@@ -22,8 +26,8 @@ function UserDirectory(props) {
       <div className="users">
         { users.length ?
             users.map((user, idx) =>
-              <Link className="user-preview" to={`/users/${user.username}`}>
-                <img src={user.avatar || Constants.NOAVATAR} />
+              <Link key={idx} className="user-preview" to={`/users/${user.username}`}>
+                <img alt={`${user.firstName}'s avatar`} src={user.avatar || Constants.NOAVATAR} />
                 <span>{user.username}</span>
               </Link>
             )

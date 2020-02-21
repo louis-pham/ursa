@@ -11,8 +11,8 @@
   font-size: 2.4rem;
 }
 
-.PollPage .creator-info {
-
+.PollPage img {
+  border-radius: 50%;
 }
 
 .PollPage .question, .PollPage .response {
@@ -58,6 +58,10 @@
   justify-content: flex-start;
   align-items: center;
   font-weight: 700;
+}
+
+.PollPage .response .response-choice label {
+  padding-left: 10px;
 }
 
 .PollPage .response .btn {

@@ -15,20 +15,28 @@ function PollPage(props) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await pollService.get(props.match.params.id);
-      console.log(data);
-      setPoll(data.poll);
-      setResponse(data.response);
-      setTotalResponses(data.totalResponses);
+      try {
+        const data = await pollService.get(props.match.params.id);
+        setPoll(data.poll);
+        setResponse(data.response);
+        setTotalResponses(data.totalResponses);
+      } catch (err) {
+        props.notify("error", `Couldn't get poll data - ${err.message}`);
+      }
+
+
     }
     fetchData();
-    console.log(props.match);
   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await pollService.castVote(props.match.params.id, selectedChoice);
-    window.location.reload();
+    try {
+      await pollService.castVote(props.match.params.id, selectedChoice);
+      window.location.reload();
+    } catch (err) {
+      props.notify("error", err.message);
+    }
   };
 
   const handleChoiceChange = e => {
@@ -54,7 +62,7 @@ function PollPage(props) {
               {poll.choices.map((choice, idx) =>
                 <span key={idx} className="response-choice">
                   <input id={idx} type="radio" name="choice" value={choice._id} checked={selectedChoice === choice._id || (response.length && response[0]._id === choice._id)} onChange={handleChoiceChange} disabled={response.length > 0} />
-                  <label for={idx}>{choice.content}</label>
+                  <label htmlFor={idx}>{choice.content}</label>
                 </span>
               )}
               <button className="btn" type="submit" disabled={response.length > 0}>Cast vote</button>
