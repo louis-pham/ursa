@@ -3,7 +3,7 @@ import socketIOClient from "socket.io-client";
 
 import "./Chatroom.css";
 
-const SOCKETIOENDPOINT = "http://127.0.0.1:3002";
+const SOCKETIOENDPOINT = process.env.SOCKETIOENDPOINT || "http://localhost:3002";
 const socket = socketIOClient(SOCKETIOENDPOINT);
 
 class Chatroom extends React.Component {
@@ -14,7 +14,6 @@ class Chatroom extends React.Component {
 
   componentDidMount() {
     socket.on('add-message', function (data) {
-      console.log(this);
       this.setState({
         chatMessages: [...this.state.chatMessages, data]
       });
