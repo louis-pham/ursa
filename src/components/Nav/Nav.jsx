@@ -17,7 +17,7 @@ const Nav = (props) => {
 
   return (
     <div className='Nav'>
-      <Link to="/" className="logo"><img alt="Ursa logo" src="/static/media/fgPTrlTWKzx7u2-5y1-ZVgvML_3lA_hZXonp41yTyXo.png"/></Link>
+      <Link to="/" className="logo"><img alt="Ursa logo" src="/media/fgPTrlTWKzx7u2-5y1-ZVgvML_3lA_hZXonp41yTyXo.png"/></Link>
       {nav}
     </div>
   );

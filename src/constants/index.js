@@ -1,1 +1,1 @@
-export const NOAVATAR = "/static/media/no-avatar.svg";
+export const NOAVATAR = "/media/no-avatar.svg";
