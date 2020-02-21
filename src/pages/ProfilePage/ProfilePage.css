@@ -1,6 +1,25 @@
 .ProfilePage {
-  height: var(--remaining-height);
+  min-height: var(--remaining-height);
   padding: var(--global-padding);
   display: flex;
   flex-direction: column;
+}
+
+.ProfilePage img {
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+.ProfilePage h1 {
+  font-size: 3rem;
+}
+
+.ProfilePage .label {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #5d5b5b;
+}
+
+.ProfilePage .user-detail {
+  font-size: 1.2rem;
 }

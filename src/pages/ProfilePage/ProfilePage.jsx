@@ -7,23 +7,23 @@ import * as Constants from "../../constants";
 function ProfilePage({ user, match, history }) {
   return (
     <div className='ProfilePage'>
-      <h2>{user.firstName}'s Details</h2>
+      <h1>My Details</h1>
       <img alt={`${user.firstName}'s avatar'`} src={user.avatar || Constants.NOAVATAR} />
 
       <span className="label">Username</span>
-      <span id="username">{user.username}</span>
+      <span id="username" className="user-detail">{user.username}</span>
 
       <span className="label">First name</span>
-      <span id="firstName">{user.firstName}</span>
+      <span id="firstName" className="user-detail">{user.firstName}</span>
 
       <span className="label">Last name</span>
-      <span id="lastName">{user.lastName}</span>
+      <span id="lastName" className="user-detail">{user.lastName}</span>
 
       <span className="label">Email</span>
-      <span id="email">{user.email}</span>
+      <span id="email" className="user-detail">{user.email}</span>
 
       <span className="label">Joined</span>
-      <span id="email">{user.createdAt}</span>
+      <span id="email" className="user-detail">{new Date(user.createdAt).toLocaleDateString()}</span>
 
       <Link to={`${match.url}/edit`} className="btn">Settings</Link>
       <Link to="/" className="btn btn--minimal">Back</Link>

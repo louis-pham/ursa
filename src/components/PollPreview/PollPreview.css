@@ -36,13 +36,19 @@
 }
 
 .PollPreview .poll-contents .poll-options .preview {
-  display: inline-block;
+  flex: 1 1 auto;
   padding: 5px 10px;
   margin: 0 5px;
   border: 2px dashed #a9a9a9;
   border-radius: 5px;
   text-align: center;
   color: grey;
+  max-width: 100px;
+}
+
+.PollPreview .more-options {
+  color: grey;
+  font-weight: 800;
 }
 
 
@@ -57,4 +63,8 @@
   text-transform: uppercase;
   color: black;
   font-weight: 500;
+}
+
+.PollPreview .poll-link:hover {
+  background-color: lightpink;
 }

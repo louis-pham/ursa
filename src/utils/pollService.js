@@ -5,6 +5,8 @@ const BASE_URL = "/api/polls/";
 export default {
   create,
   getAllPolls,
+  get,
+  castVote,
   deletePoll
 };
 
@@ -32,6 +34,32 @@ function getAllPolls() {
   }).then(res => {
     if (res.ok) return res.json();
     throw new Error("error getting polls!");
+  });
+}
+
+function get(id) {
+  return fetch(BASE_URL + `polls/${id}`, {
+    method: "GET",
+    headers: new Headers({
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + tokenService.getToken()
+    })
+  }).then(res => {
+    if (res.ok) return res.json();
+    throw new Error("error getting poll!");
+  });
+}
+
+function castVote(id, choiceId) {
+  return fetch(BASE_URL + `polls/${id}/${choiceId}`, {
+    method: "PUT",
+    headers: new Headers({
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + tokenService.getToken()
+    })
+  }).then(res => {
+    if (res.ok) return res.json();
+    throw new Error("error casting vote!");
   });
 }
 

@@ -1,0 +1,24 @@
+.PollPage {
+  min-height: var(--remaining-height);
+  padding: var(--global-padding);
+}
+
+.PollPage .creator-info {
+
+}
+
+.PollPage .question {
+
+}
+
+.PollPage .response {
+
+}
+
+.PollPage .response-choice {
+
+}
+
+.PollPage .your-info {
+
+}

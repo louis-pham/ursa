@@ -15,6 +15,7 @@ import UserPage from "../UserPage/UserPage";
 import UserDirectory from "../UserDirectory/UserDirectory";
 // poll-related pages
 import CreatePollPage from "../CreatePollPage/CreatePollPage";
+import PollPage from "../PollPage/PollPage";
 // misc. pages
 import About from "../About/About";
 import Terms from "../Terms/Terms";
@@ -101,6 +102,13 @@ class App extends React.Component {
             path="/polls/create"
             render={({ history, match }) => (
               <CreatePollPage match={match} user={this.state.user} history={history} />
+            )}
+          />
+          <Route
+            exact
+            path="/polls/:id"
+            render={({ history, match }) => (
+              <PollPage match={match} user={this.state.user} history={history} />
             )}
           />
           <Route

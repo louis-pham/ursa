@@ -11,7 +11,6 @@ function Dashboard(props) {
   useEffect(() => {
     const fetchPollsData = async () => {
       const data = await pollService.getAllPolls();
-      console.log(data);
       setPolls(data);
     };
     fetchPollsData();
@@ -21,12 +20,18 @@ function Dashboard(props) {
     <div className="Dashboard">
       <span className="welcome-msg">Hi, {props.user.firstName}!</span>
       <h1>Dashboard</h1>
-      <Link to="/polls/create" className="btn btn--primary">Create A Poll</Link>
-      <section className="polls">
+      <div className="btn-group">
+        <Link to="/polls/create" className="btn btn--primary">Create A Poll</Link>
+        <Link to="/profile" className="btn btn--secondary">Your Profile</Link>
+      </div>
       <h2>Your Timeline</h2>
-        {polls.map((poll, idx) =>
-          <PollPreview key={idx} poll={poll} />
-        )}
+      <section className="polls">
+        {polls.length ?
+          polls.map((poll, idx) =>
+          <PollPreview key={idx} poll={poll} />)
+        :
+          <div className="lds-dual-ring"></div>
+        }
       </section>
     </div>
   );

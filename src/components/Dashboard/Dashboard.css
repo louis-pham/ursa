@@ -1,6 +1,6 @@
 .Dashboard {
   min-height: var(--remaining-height);
-  padding: 20px;
+  padding: var(--global-padding);
 }
 
 .Dashboard .welcome-msg {
@@ -17,4 +17,27 @@
 
 .Dashboard h2 {
   font-size: 2rem;
+}
+
+@media screen and (min-width: 750px) {
+  .polls {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px 20px;
+    align-items: start;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .polls {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 25px 25px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .polls {
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 30px 30px;
+  }
 }

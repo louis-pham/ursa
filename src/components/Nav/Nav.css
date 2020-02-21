@@ -10,9 +10,14 @@
 }
 
 .Nav-link, .Nav-link:visited {
-  color: lightpink;
+  color: #495e8e;
   text-decoration: none;
-  margin-left: 5px;
+  text-transform: uppercase;
+  margin-left: 30px;
+}
+
+.Nav-link:hover {
+  color: #01000a;
 }
 
 .Nav .Nav-link.profile {

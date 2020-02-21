@@ -23,12 +23,15 @@ function CreatePollPage(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(state);
     try {
+      if (state.question.length > 140) throw new Error("question longer 140 characters");
+      state.choices.forEach(choice => {
+        if (choice.content.length > 140) throw new Error("a choice is longer 140 characters");
+      });
       await pollService.create(state);
       props.history.push("/");
     } catch (err) {
-      alert("couldnt create poll");
+      alert(err);
     }
   }
 
@@ -57,7 +60,7 @@ function CreatePollPage(props) {
     <div className="CreatePollPage">
       <h1>Create A Poll</h1>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="question">Question</label>
+        <label htmlFor="question">Question (max 140 chars.)</label>
         <input id="question" name="question" type="text" onChange={handleChange} value={state.question} />
         <label htmlFor="time-limit">Expires</label>
         <input id="time-limit" name="time_limit" type="datetime-local" onChange={handleChange} />
@@ -70,7 +73,7 @@ function CreatePollPage(props) {
               </div>)
               :
               <span>No choices yet</span>}
-          <label htmlFor="content">Choice</label>
+          <label htmlFor="content">Choice (max 140 chars.)</label>
           <input id="content" name="content" type="text" value={newChoice.content} onChange={handleNewChoiceChange} />
           <button onClick={handleAddNewChoice}>Add Choice</button>
         </div>

@@ -8,6 +8,7 @@ module.exports = {
   create,
   getAllPolls,
   get,
+  castVote,
   update,
   deletePoll
 }
@@ -36,11 +37,35 @@ async function getAllPolls(req, res) {
 }
 
 async function get(req, res) {
+  try {
+    const poll = await Poll.findOne({_id: req.params.id}).populate("creator");
+    if (!poll) return res.status(401).json({err: 'could not find poll'});
+    const response = poll.choices.filter(choice => choice.responses.includes(req.user._id));
+    res.status(200).json({poll, response});
+  } catch (err) {
+    return res.status(401).json(err);
+  }
+}
 
+async function castVote(req, res) {
+  try {
+    console.log("castVote");
+    const poll = await Poll.findOne({_id: req.params.id});
+    if (!poll) return res.status(401).json({err: 'could not find poll'});
+    const response = poll.choices.filter(choice => choice.responses.includes(req.user._id));
+    if (!response.length) {
+      poll.choices.id(req.params.choiceId).responses.push(req.user._id);
+      poll.save();
+      res.status(200).json(poll);
+    }
+    res.status(401).json("Already voted");
+  } catch (err) {
+    res.status(401).json(err);
+  }
 }
 
 async function update(req, res) {
-  
+
 }
 
 async function deletePoll(req, res) {

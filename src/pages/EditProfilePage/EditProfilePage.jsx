@@ -77,7 +77,7 @@ function EditProfilePage({ user, history, handleSignupOrLogin, handleLogout }) {
   return (
     <>
     <div className='EditProfilePage'>
-      <h2>Edit Details</h2>
+      <h1>Edit My Details</h1>
       <img alt={`${user.firstName}'s avatar`} src={user.avatar || Constants.NOAVATAR} />
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username</label>
@@ -101,10 +101,11 @@ function EditProfilePage({ user, history, handleSignupOrLogin, handleLogout }) {
         <label htmlFor="passwordConf">Confirm Password</label>
         <input type="password" className="form-control" placeholder="････････" value={state.passwordConf} id="passwordConf" name="passwordConf" onChange={handleChange} />
 
-        <button type="submit" className="btn btn-default" disabled={isModified()}>Update</button>
-        <Link to="/profile" className="btn btn--minimal">Cancel</Link>
+        <button type="submit" className="btn btn--secondary" disabled={isModified()}>Update</button>
+
       </form>
-      <button className="btn btn--alert" onClick={() => setConfirmModalVisible(true)}>Delete</button>
+      <button className="btn btn--alert" onClick={() => setConfirmModalVisible(true)}>Delete Account</button>
+      <Link to="/profile" className="btn btn--minimal">Cancel</Link>
     </div>
     <div className="confirm-delete" style={{display: isConfirmModalVisible ? "block" : "none"}}>
       <div className="delete-modal">

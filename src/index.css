@@ -17,7 +17,7 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: "Quicksand", -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -28,6 +28,11 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+input {
+  padding: 5px 10px;
+  border-radius: 5px;
 }
 
 a {
@@ -62,10 +67,12 @@ a.logo img {
 .btn {
   display: inline-block;
   padding: 8px 15px;
+  margin: 3px;
   background-color: lightgrey;
   border-radius: 5px;
   color: black;
   text-decoration: none;
+  text-align: center;
   font-size: 1.2rem;
   cursor: pointer;
   border: none;
@@ -86,6 +93,10 @@ a.btn:visited {
   background-color: orange;
 }
 
+.btn--secondary {
+  background-color: lightgreen;
+}
+
 .btn--minimal {
   background-color: rgba(0,0,0,0);
   border: 1px solid #ccc;
@@ -94,6 +105,12 @@ a.btn:visited {
 .btn--alert {
   background-color: #c34343;
   color: white;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .avatar {
@@ -120,4 +137,58 @@ footer .links a {
   margin-left: 10px;
   display: block;
   text-align: right;
+}
+
+.lds-dual-ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #cef;
+  border-color: #cef transparent #cef transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (min-width: 750px) {
+  :root {
+    --global-padding: 20px 40px;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  :root {
+    --global-padding: 40px 60px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  :root {
+    --global-padding: 40px 100px;
+  }
 }

@@ -4,7 +4,8 @@ var Schema = mongoose.Schema;
 const choiceSchema = new Schema({
   content: {
     type: String,
-    required: true
+    required: true,
+    maxlength: 140
   },
   responses: [{type: Schema.Types.ObjectId, ref: 'User'}]
 });
@@ -22,9 +23,13 @@ const choiceSchema = new Schema({
 const pollSchema = new Schema({
   question: {
     type: String,
-    required: true
+    required: true,
+    maxlength: 140
   },
-  choices: [choiceSchema],
+  choices: {
+    type: [choiceSchema],
+    validate: [minimumChoices, "Below the minimum of 2"]
+  },
   // comments: [commentSchema],
   // likes: {
   //  // array of ref
@@ -47,5 +52,8 @@ const pollSchema = new Schema({
   timestamps: true
 });
 
+function minimumChoices(val) {
+  return val.length >= 2;
+}
 
 module.exports = mongoose.model('Poll', pollSchema);

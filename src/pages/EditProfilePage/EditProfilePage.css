@@ -1,6 +1,36 @@
 .EditProfilePage {
-  height: var(--remaining-height);
+  min-height: var(--remaining-height);
   padding: var(--global-padding);
+  display: flex;
+  flex-direction: column;
+}
+
+.EditProfilePage h1 {
+  font-size: 3rem;
+}
+
+.EditProfilePage img {
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+.EditProfilePage form {
+  display: flex;
+  flex-direction: column;
+}
+
+.EditProfilePage label {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #5d5b5b;
+}
+
+.EditProfilePage input {
+  font-size: 1.2rem;
+}
+
+.EditProfilePage .btn {
+  margin: 10px 0 0 0;
 }
 
 .confirm-delete {

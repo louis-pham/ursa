@@ -17,9 +17,10 @@ function PollPreview(props) {
           {poll.question}
         </span>
         <div className="poll-options">
-          {poll.choices.map((choice, idx) =>
+          {poll.choices.slice(0,4).map((choice, idx) =>
             <div key={idx} className="preview hidden-ellipsis">{choice.content}</div>
           )}
+          {poll.choices.length > 4 && <span className="more-options">...</span>}
         </div>
       </div>
       <Link className="poll-link" to={`/polls/${poll._id}`}>View details</Link>
