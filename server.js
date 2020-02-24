@@ -34,5 +34,5 @@ app.listen(port, function() {
 const server = http.createServer(app);
 const io = require('./io');
 io.attach(server);
-const socketIoPort = 3002;
-server.listen(socketIoPort, () => console.log(`Socket.io listening on port ${socketIoPort}`));
+const SOCKETIOPORT = 3002;
+server.listen(SOCKETIOPORT, () => console.log(`Socket.io listening on port ${SOCKETIOPORT}`));
