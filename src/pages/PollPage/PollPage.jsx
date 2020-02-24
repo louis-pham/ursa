@@ -68,7 +68,7 @@ function PollPage(props) {
               <button className="btn" type="submit" disabled={response.length > 0}>Cast vote</button>
             </form>
             <div className="your-info">
-              <img alt={`${poll.creator.firstName}'s avatar`} src={poll.creator.avatar || Constants.NOAVATAR} />
+              <img alt={`${props.user.firstName}'s avatar`} src={props.user.avatar || Constants.NOAVATAR} />
               <Link to="/profile">You</Link>
             </div>
           </div>
